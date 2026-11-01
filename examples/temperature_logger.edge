@@ -1,0 +1,12 @@
+program TemperatureMonitor {
+    @critical int raw = read_sensor(0);
+    int calibration = 3;
+    int adjusted = raw + calibration;
+    int filtered = adjusted * 2;
+    int threshold = 50;
+    @optional int cached_status = 1;
+    @disposable int debug_tick = 99;
+    checkpoint();
+    bool alert = filtered > threshold;
+    print(alert);
+}

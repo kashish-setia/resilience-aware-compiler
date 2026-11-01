@@ -1,0 +1,12 @@
+program LoopAccumulator {
+    @critical int sensor_base = read_sensor(0);
+    int sum = 0;
+    int i = 0;
+    while (i < 5) {
+        sum = sum + sensor_base;
+        i = i + 1;
+    }
+    @disposable int loop_counter_debug = i;
+    checkpoint();
+    print(sum);
+}

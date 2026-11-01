@@ -1,0 +1,12 @@
+program ArithmeticChain {
+    @critical int start_seed = read_sensor(0);
+    int step1 = start_seed + 10;
+    int step2 = step1 * 3;
+    int step3 = step2 - 15;
+    int step4 = step3 / 2;
+    int step5 = step4 + 7;
+    @disposable int temp_calc = 888;
+    checkpoint();
+    int final_result = step5 * 2;
+    print(final_result);
+}

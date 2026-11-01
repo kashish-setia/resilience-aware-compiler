@@ -1,0 +1,10 @@
+program PolynomialPipeline {
+    @critical int input_x = read_sensor(0);
+    int poly1 = input_x * input_x;
+    int poly2 = poly1 * 3;
+    int poly3 = poly2 + (input_x * 5);
+    int curve_val = poly3 + 17;
+    checkpoint();
+    int output_metric = curve_val / 4;
+    print(output_metric);
+}

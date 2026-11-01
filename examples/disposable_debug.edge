@@ -1,0 +1,9 @@
+program TelemetryLogger {
+    @critical int telemetry_packet = read_sensor(2);
+    int checksum = telemetry_packet % 256;
+    @disposable int log_id = 9999;
+    @disposable int volatile_status = 123;
+    @disposable int debug_timestamp = 45678;
+    checkpoint();
+    print(checksum);
+}

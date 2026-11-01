@@ -1,0 +1,11 @@
+program SensorCalibration {
+    @critical int raw_in = read_sensor(0);
+    int zero_offset = 10;
+    int gain_multiplier = 4;
+    int calibrated = (raw_in - zero_offset) * gain_multiplier;
+    @optional int cached_average = calibrated / 2;
+    @disposable int debug_seq = 1001;
+    checkpoint();
+    int normalized = calibrated + 5;
+    print(normalized);
+}

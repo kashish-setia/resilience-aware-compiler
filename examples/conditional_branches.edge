@@ -1,0 +1,13 @@
+program EnvironmentalControl {
+    @critical int ambient = read_sensor(0);
+    int target = 22;
+    int mode = 0;
+    if (ambient > target) {
+        mode = 1;
+    } else {
+        mode = 2;
+    }
+    @optional int cache_power = mode * 50;
+    checkpoint();
+    print(mode);
+}

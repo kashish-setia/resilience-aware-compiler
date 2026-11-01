@@ -1,0 +1,12 @@
+program HeartRateMonitor {
+    @critical int pulse_raw = read_sensor(1);
+    int baseline = 60;
+    int delta = pulse_raw - baseline;
+    int bpm = baseline + delta;
+    bool tachycardia = bpm > 100;
+    bool bradycardia = bpm < 50;
+    @optional int cache_zone = 2;
+    checkpoint();
+    print(bpm);
+    print(tachycardia);
+}

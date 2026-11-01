@@ -1,0 +1,8 @@
+program MultiSensorFusion {
+    @critical int temp_sensor = read_sensor(0);
+    @critical int pressure_sensor = read_sensor(2);
+    int combined_index = (temp_sensor * 10) + (pressure_sensor / 100);
+    @optional int cache_reading = combined_index;
+    checkpoint();
+    print(combined_index);
+}
